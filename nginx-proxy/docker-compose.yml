@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy:latest
+    container_name: nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /data/certs:/etc/nginx/certs:ro
+      - ./client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
+      - ./timeout.conf:/etc/nginx/conf.d/timeout.conf
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+    network_mode: host
+    restart: unless-stopped
+
+  # Use letsencrypt to serve HTTPS
+  nginx-encrypt-https:
+    image: jrcs/letsencrypt-nginx-proxy-companion:v1.13
+    container_name: nginx-encrypt-https
+    depends_on: 
+      - nginx-proxy
+    volumes:
+      - /data/certs:/etc/nginx/certs:rw
+      - ./client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
+      - ./timeout.conf:/etc/nginx/conf.d/timeout.conf
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+    environment: 
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+      - REUSE_KEY=false
+      - DEBUG=true
+      - DEFAULT_EMAIL=vincent.emonet@maastrichtuniversity.nl
+    network_mode: host
+    restart: unless-stopped
+
+volumes: 
+  vhost:
+  html:
+
