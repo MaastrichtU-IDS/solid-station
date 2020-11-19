@@ -44,7 +44,7 @@ sudo mkdir -p /data/solid/data
 sudo chown -R 1000:1000 /data/solid
 ```
 
-3. If this the first time you start the SOLID server, then it will fail to start due to the HTTPS certificates that have not been generated already. You need to first run a dummy nginx container, and go to the URL you want for your SOLID server to trigger LetsEncrypt to generate the HTTPS certificates for it (change `solid.137.120.31.102.nip.io` to your address in this example):
+3. If this is the first time you start the SOLID server, then it might fail due to the HTTPS certificates that have not been generated yet. In this case you need to first run a dummy nginx container, and go to the URL you want for your SOLID server to trigger LetsEncrypt to generate the HTTPS certificates for it (change `solid.137.120.31.102.nip.io` to your address in this example):
 
 ```bash
 docker run --rm --name nginx -e VIRTUAL_HOST=solid.137.120.31.102.nip.io -e LETSENCRYPT_HOST=solid.137.120.31.102.nip.io nginx
