@@ -1,6 +1,6 @@
 # 🚉⚕️ SOLID Station for the Personal Health Train
 
-This repository will guide you to deploy a **SOLID Data Station** for the [**Personal Health Train**](https://www.dtls.nl/fair-data/personal-health-train/) project using [Docker](https://www.docker.com/).
+This repository will guide you to deploy a **[SOLID](https://solidproject.org/) Data Station** for the [**Personal Health Train**](https://www.dtls.nl/fair-data/personal-health-train/) project using [Docker](https://www.docker.com/).
 
 Start by cloning this repository on your server with port 80 and 443 publicly available
 
