@@ -1,4 +1,4 @@
-# Deploy Solid pods at IDS
+This repository will guide you to deploy a **SOLID Data Station** for the **Personal Health Train** project using [Docker](https://www.docker.com/).
 
 See Solid server Docker documentation: https://github.com/solid/node-solid-server/tree/master/docker-image
 
@@ -6,6 +6,8 @@ See Solid server Docker documentation: https://github.com/solid/node-solid-serve
 git clone https://github.com/MaastrichtU-IDS/solid-station.git
 cd solid-station
 ```
+
+> We are using **solid.semanticscience.org** as URL for the SOLID pods in this example, change it for your URL.
 
 ## Deploy nginx proxy
 
@@ -24,9 +26,9 @@ docker-compose logs
 
 > N.B. you can also try to use the proxy of your choice as explained in the [official SOLID documentation](https://solidproject.org//self-hosting/nss).
 
-## Deploy SOLID
+Go back to the root of the git repository: `cd ..`
 
-Go back to the root of the git repository.
+## Deploy SOLID pods
 
 Change the `docker-compose.yml` to set the right path for HTTPS certificates in `VIRTUAL_HOST`, `LETSENCRYPT_HOST` variables (wildcards are not supported.
 
