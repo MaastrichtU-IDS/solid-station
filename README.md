@@ -68,7 +68,7 @@ python3 utils/generate_urls.py
 
 ## Stop the service
 
-Stop the SOLID server with:
+Stop the SOLID server by running the following in at the root of the git repository:
 
 ```bash
 docker-compose down
