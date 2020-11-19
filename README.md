@@ -1,6 +1,6 @@
 # 🚉⚕️ SOLID Station for the Personal Health Train
 
-This repository will guide you to deploy a **SOLID Data Station** for the **Personal Health Train** project using [Docker](https://www.docker.com/).
+This repository will guide you to deploy a **SOLID Data Station** for the [**Personal Health Train**](https://www.dtls.nl/fair-data/personal-health-train/) project using [Docker](https://www.docker.com/).
 
 Start by cloning this repository on your server with port 80 and 443 publicly available
 
@@ -9,7 +9,7 @@ git clone https://github.com/MaastrichtU-IDS/solid-station.git
 cd solid-station
 ```
 
-> We are using **solid.semanticscience.org** as URL for the SOLID pods in this example, change it for your URL.
+> We are using **solid.137.120.31.102.nip.io** as URL for the SOLID pods in this example, change it for your URL.
 
 ## Deploy nginx proxy
 
@@ -44,10 +44,10 @@ sudo mkdir -p /data/solid/data
 sudo chown -R 1000:1000 /data/solid
 ```
 
-3. If this the first time you start the SOLID server, then it will fail to start due to the HTTPS certificates that have not been generated already. You need to first run a dummy nginx container, and go to the URL you want for your SOLID server to trigger LetsEncrypt to generate the HTTPS certificates for it (change `solid.semanticscience.org` to your address in this example):
+3. If this the first time you start the SOLID server, then it will fail to start due to the HTTPS certificates that have not been generated already. You need to first run a dummy nginx container, and go to the URL you want for your SOLID server to trigger LetsEncrypt to generate the HTTPS certificates for it (change `solid.137.120.31.102.nip.io` to your address in this example):
 
 ```bash
-docker run --rm --name nginx -e VIRTUAL_HOST=solid.semanticscience.org -e LETSENCRYPT_HOST=solid.semanticscience.org nginx
+docker run --rm --name nginx -e VIRTUAL_HOST=solid.137.120.31.102.nip.io -e LETSENCRYPT_HOST=solid.137.120.31.102.nip.io nginx
 ```
 
 4. You can now stop this dummy container and start the SOLID server with `docker-compose`!
@@ -57,3 +57,7 @@ docker-compose up -d
 ```
 
 > See also the [official SOLID server Docker documentation](https://github.com/solid/node-solid-server/tree/master/docker-image).
+
+## Contribute
+
+See the [instructions to contribute 👨‍💻](/CONTRIBUTING.md)
