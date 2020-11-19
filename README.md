@@ -66,6 +66,16 @@ You can change and run our python script to generate URLs to be used in the `VIR
 python3 utils/generate_urls.py
 ```
 
+## Stop the service
+
+Stop the SOLID server with:
+
+```bash
+docker-compose down
+```
+
+You can do the same for the nginx-proxy in the `nginx-proxy` folder.
+
 ## Contribute
 
 See the [instructions to contribute 👨‍💻](/CONTRIBUTING.md)
