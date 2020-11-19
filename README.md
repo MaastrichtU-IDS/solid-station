@@ -18,6 +18,8 @@ cd nginx-proxy
 docker-compose up -d
 ```
 
+> HTTPS certificates are stored in `/data/certs`
+
 Check the logs with:
 
 ```bash
@@ -30,9 +32,9 @@ Go back to the root of the git repository: `cd ..`
 
 ## Deploy the SOLID server
 
-Change the `docker-compose.yml` to set the right path for HTTPS certificates in `VIRTUAL_HOST`, `LETSENCRYPT_HOST` variables (wildcards are not supported.
+1. Change the `docker-compose.yml` to set the right path for HTTPS certificates in `VIRTUAL_HOST`, `LETSENCRYPT_HOST` variables (wildcards are not supported).
 
-1. Create the following directories for the SOLID pods data on your server and set their owner to `1000`
+2. Create the following directories for the SOLID pods data on your server and set their owner to `1000`
 
 ```bash
 sudo mkdir -p /data/solid/config
@@ -40,13 +42,13 @@ sudo mkdir -p /data/solid/data
 sudo chown -R 1000:1000 /data/solid
 ```
 
-2. If this the first time you start the SOLID server, then it will fail to start due to the HTTPS certificates that have not been generated already. You need to first run a dummy nginx container, and go to the URL you want for your SOLID server to trigger LetsEncrypt to generate the HTTPS certificates for it (change `solid.semanticscience.org` to your address in this example):
+3. If this the first time you start the SOLID server, then it will fail to start due to the HTTPS certificates that have not been generated already. You need to first run a dummy nginx container, and go to the URL you want for your SOLID server to trigger LetsEncrypt to generate the HTTPS certificates for it (change `solid.semanticscience.org` to your address in this example):
 
 ```bash
 docker run --rm --name nginx -e VIRTUAL_HOST=solid.semanticscience.org -e LETSENCRYPT_HOST=solid.semanticscience.org nginx
 ```
 
-3. You can now stop this dummy container and start the SOLID server with `docker-compose`!
+4. You can now stop this dummy container and start the SOLID server with `docker-compose`!
 
 ```bash
 docker-compose up -d
