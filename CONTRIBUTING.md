@@ -1,7 +1,5 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue.
-
 When contributing to this repository, please first discuss the change you wish to make via an [issue](https://github.com/MaastrichtU-IDS/solid-station/issues) if applicable.
 
 If you are part of the [MaastrichtU-IDS organization on GitHub](https://github.com/MaastrichtU-IDS) you can directly create a branch in this repository. Otherwise you will need to first [fork this repository](https://github.com/MaastrichtU-IDS/solid-station/fork).

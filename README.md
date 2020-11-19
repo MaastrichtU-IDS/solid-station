@@ -56,7 +56,15 @@ docker run --rm --name nginx -e VIRTUAL_HOST=solid.137.120.31.102.nip.io -e LETS
 docker-compose up -d
 ```
 
+The SOLID server data are stored in `/data/solid` on your server/computer.
+
 > See also the [official SOLID server Docker documentation](https://github.com/solid/node-solid-server/tree/master/docker-image).
+
+You can change and run our python script to generate URLs to be used in the `VIRTUAL_HOST` environment variable:
+
+```bash
+python3 utils/generate_urls.py
+```
 
 ## Contribute
 
